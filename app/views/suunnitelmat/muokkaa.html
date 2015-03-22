@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Muokkaa: testimuistio 1</h1>
+  
+  <form>
+	<div class="form-group">
+		<label>Nimi</label>
+		<input class="form-control" value="testimuistio 1" type="text">
+	</div>
+	<div class="form-group">
+		<label>Lisätiedot</label>
+		<input class="form-control" value="Tähän tulee muistiinpanon lisätiedot/tarkempi kuvaus" type="text">
+	</div>
+	<div class="form-group">
+		<label>Luokka</label>
+		<input class="form-control" value="sekalaiset" type="text">
+	</div>
+	<div><strong>Tärkeys:</strong></div>
+	<div>
+		<select class="form-group">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-success">Tallenna</button>
+	</div>
+  </form>
+
+{% endblock %}
