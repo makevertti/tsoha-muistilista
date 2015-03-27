@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>{{muistiinpano.nimi}}</h1>
+  
+  <p><strong>Lisätiedot:</strong> {{muistiinpano.lisatiedot}}</p>
+  <p><strong>Luokka:</strong> [kategoria]</p>
+  <p><strong>Tärkeys:</strong> {{muistiinpano.prioriteetti}}</p>
+  <p><strong>Lisäyspäivä:</strong> {{muistiinpano.lisayspaiva}}</p>
+  
+  <p>
+	<a class="btn btn-default" href="{{base_path}}/muistiinpano/muokkaa/{{muistiinpano.id}}" role="button">Muokkaa</a>
+	<a class="btn btn-danger" href="" role="button">Poista</a>
+  </p>
+
+{% endblock %}

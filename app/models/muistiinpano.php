@@ -15,13 +15,13 @@
       
       foreach($rivit as $rivi) {
         $muistiinpanot[] = new Muistiinpano(array(
-	  'id' => $rivi['id'],
-	  'nimi' => $rivi['nimi'],
-	  'lisatiedot' => $rivi['lisatiedot'],
-	  'prioriteetti' => $rivi['prioriteetti'],
-	  'lisayspaiva' => $rivi['lisayspaiva'],
-	  'kayttaja' => $rivi['kayttaja']
-	));
+	    'id' => $rivi['id'],
+	    'nimi' => $rivi['nimi'],
+	    'lisatiedot' => $rivi['lisatiedot'],
+	    'prioriteetti' => $rivi['prioriteetti'],
+	    'lisayspaiva' => $rivi['lisayspaiva'],
+	    'kayttaja' => $rivi['kayttaja']
+	    ));
       }
 
       return $muistiinpanot;
@@ -34,13 +34,13 @@
 
       if($rivi) {
         $muistiinpano = new Muistiinpano(array(
-	  'id' => $rivi['id'],
-	  'nimi' => $rivi['nimi'],
-	  'lisatiedot' => $rivi['lisatiedot'],
-	  'prioriteetti' => $rivi['prioriteetti'],
-	  'lisayspaiva' => $rivi['lisayspaiva'],
-	  'kayttaja' => $rivi['kayttaja'],
-	));
+	    'id' => $rivi['id'],
+	    'nimi' => $rivi['nimi'],
+	    'lisatiedot' => $rivi['lisatiedot'],
+	    'prioriteetti' => $rivi['prioriteetti'],
+	    'lisayspaiva' => $rivi['lisayspaiva'],
+	    'kayttaja' => $rivi['kayttaja'],
+	    ));
       }
 
       return $muistiinpano;

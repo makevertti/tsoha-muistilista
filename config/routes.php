@@ -23,3 +23,11 @@
   $routes->get('/kirjautuminen', function() {
 	HelloWorldController::kirjautuminen();
   });
+  
+  $routes->get('/muistiinpanot', function() {
+	MuistiinpanoController::index();
+  });
+  
+  $routes->get('/muistiinpano/:id', function($id) {
+	MuistiinpanoController::show($id);
+  });
