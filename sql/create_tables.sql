@@ -9,7 +9,7 @@ create table muistiinpano(
 	kayttaja integer references kayttaja(id),
 	nimi varchar(50) not null,
 	lisatiedot varchar(500),
-	prioriteetti smallint,
+	prioriteetti integer,
 	lisayspaiva date
 );
 

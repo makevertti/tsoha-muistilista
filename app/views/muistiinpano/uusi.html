@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Luo uusi muistiinpano</h1>
+  
+  <form method="post" action="{{base_path}}/muistiinpano">
+    <div class="form-group">
+	  <label>Nimi</label>
+	  <input name="nimi" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label>Lisätiedot</label>
+	  <textarea name="lisatiedot" class="form-control" type="text"></textarea>
+    </div>
+    <div><strong>Prioriteetti:</strong></div>
+    <div class "form-group">
+	  <select type="number" name="prioriteetti" class="form-control">
+	    <option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	  </select>
+    </div>
+    <div class="form-group">
+	  <button type="submit" class="btn btn-success">Tallenna</button>
+    </div>
+  </form>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    MuistiinpanoController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
@@ -26,6 +26,14 @@
   
   $routes->get('/muistiinpanot', function() {
 	MuistiinpanoController::index();
+  });
+  
+  $routes->post('/muistiinpano', function() {
+    MuistiinpanoController::store();
+  });
+
+  $routes->get('/muistiinpano/uusi', function() {
+    MuistiinpanoController::uusi();
   });
   
   $routes->get('/muistiinpano/:id', function($id) {
