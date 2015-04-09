@@ -2,7 +2,7 @@
 
   class BaseModel{
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
-    protected $validators;
+    protected $tarkistukset;
 
     public function __construct($attributes = null){
       // Käydään assosiaatiolistan avaimet läpi
@@ -17,13 +17,13 @@
 
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-      $errors = array();
+      $virheet = array();
 
-      foreach($this->validators as $validator){
+      foreach($this->tarkistukset as $tarkistus){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+		$virheet = array_merge($virheet, $this->{$tarkistus}());
       }
-
-      return $errors;
+      return $virheet;
     }
 
   }

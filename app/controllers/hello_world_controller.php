@@ -9,11 +9,13 @@
 
     public static function sandbox() {
       // Testaa koodiasi täällä
-	  $muistiinpano = Muistiinpano::find(1);
-	  $muistiinpanot = Muistiinpano::all();
-
-	  Kint::dump($muistiinpano);
-	  Kint::dump($muistiinpanot);
+	  $muistiinpano = new Muistiinpano(array(
+	  'nimi' => '',
+	  'lisatiedot' => 'testi', 
+	  'prioriteetti' => 6
+	  ));
+	  $virheet = $muistiinpano->errors();
+	  Kint::dump($virheet);
     }
 	
 	public static function lista() {

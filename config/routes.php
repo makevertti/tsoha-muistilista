@@ -39,3 +39,15 @@
   $routes->get('/muistiinpano/:id', function($id) {
 	MuistiinpanoController::show($id);
   });
+
+  $routes->get('/muistiinpano/:id/muokkaa', function($id) {
+    MuistiinpanoController::muokkaa($id);
+  });
+
+  $routes->post('/muistiinpano/:id/muokkaa', function($id) {
+    MuistiinpanoController::paivita($id);
+  });
+
+  $routes->post('/muistiinpano/:id/poista', function($id) {
+    MuistiinpanoController::poista($id);
+  });

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div class="alert alert-success">
-	{{message}}
-  </div>
+  {% if viesti %}
+    <div class="alert alert-success">
+	  {{viesti}}
+    </div>
+  {% endif %}
 
   <h1>{{muistiinpano.nimi}}</h1>
   
@@ -13,8 +15,10 @@
   <p><strong>Lisäyspäivä:</strong> {{muistiinpano.lisayspaiva}}</p>
   
   <p>
-	<a class="btn btn-default" href="{{base_path}}/muistiinpano/muokkaa/{{muistiinpano.id}}" role="button">Muokkaa</a>
-	<a class="btn btn-danger" href="" role="button">Poista</a>
+	<a class="btn btn-primary" href="{{base_path}}/muistiinpano/{{muistiinpano.id}}/muokkaa" role="button">Muokkaa</a>
+    <form method="post" action="{{base_path}}/muistiinpano/{{muistiinpano.id}}/poista" style="display: inline-block;">
+      <button type="submit" class="btn btn-danger">Poista</button>
+    </form>
   </p>
 
 {% endblock %}

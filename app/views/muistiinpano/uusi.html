@@ -2,19 +2,30 @@
 {% block content %}
 
   <h1>Luo uusi muistiinpano</h1>
-  
+
+  {% if virheet %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for virhe in virheet %}
+          <li>{{virhe}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
   <form method="post" action="{{base_path}}/muistiinpano">
     <div class="form-group">
-	  <label>Nimi</label>
-	  <input name="nimi" class="form-control" type="text">
+	  <label class="control-label">Nimi</label>
+	  <input name="nimi" class="form-control" type="text" value="{{parametrit.nimi}}">
     </div>
     <div class="form-group">
-      <label>Lisätiedot</label>
-	  <textarea name="lisatiedot" class="form-control" type="text"></textarea>
+      <label class="control-label">Lisätiedot</label>
+	  <textarea name="lisatiedot" class="form-control" type="text">{{parametrit.lisatiedot}}</textarea>
     </div>
-    <div><strong>Prioriteetti:</strong></div>
+    <label class="control-label">Prioriteetti</label>
     <div class "form-group">
 	  <select type="number" name="prioriteetti" class="form-control">
+        <option selected="selected">{{parametrit.prioriteetti}}</option>
 	    <option>1</option>
 		<option>2</option>
 		<option>3</option>

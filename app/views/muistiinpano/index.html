@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+  {% if viesti %}
+    <div class="alert alert-success">
+      {{viesti}}
+    </div>
+  {% endif %}
+
   <h1>Muistiinpanot</h1>
   
   <p><a class="btn btn-success" href="{{base_path}}/muistiinpano/uusi" role="button">Lisää uusi muistiinpano</a></p>
@@ -23,7 +29,7 @@
 		  <td>[kategoria]</td>
 		  <td>{{muistiinpano.prioriteetti}}</td>
 		  <td>{{muistiinpano.lisayspaiva}}</td>
-		  <td><a class="btn btn-primary" href="{{base_path}}/muistiinpano/muokkaa/{{muistiinpano.id}}" role="button">Muokkaa</a></td>
+		  <td><a class="btn btn-primary" href="{{base_path}}/muistiinpano/{{muistiinpano.id}}/muokkaa" role="button">Muokkaa</a></td>
         </tr>
 	  {% endfor %}
     </tbody>
