@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
-  {% if viesti %}
-    <div class="alert alert-success">
-	  {{viesti}}
-    </div>
-  {% endif %}
+  {{lomakkeet.nayta_viesti(viesti)}}
 
   <h1>{{muistiinpano.nimi}}</h1>
   
@@ -15,10 +12,8 @@
   <p><strong>Lisäyspäivä:</strong> {{muistiinpano.lisayspaiva}}</p>
   
   <p>
-	<a class="btn btn-primary" href="{{base_path}}/muistiinpano/{{muistiinpano.id}}/muokkaa" role="button">Muokkaa</a>
-    <form method="post" action="{{base_path}}/muistiinpano/{{muistiinpano.id}}/poista" style="display: inline-block;">
-      <button type="submit" class="btn btn-danger">Poista</button>
-    </form>
+    {{lomakkeet.muokkaa_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/muokkaa")}}
+    {{lomakkeet.poista_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/poista")}}
   </p>
 
 {% endblock %}

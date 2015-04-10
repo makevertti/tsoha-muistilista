@@ -8,19 +8,19 @@
     HelloWorldController::sandbox();
   });
   
-  $routes->get('/lista', function() {
+  $routes->get('/suunnitelmat/lista', function() {
 	HelloWorldController::lista();
   });
   
-  $routes->get('/tiedot/1', function() {
+  $routes->get('/suunnitelmat/tiedot/1', function() {
 	HelloWorldController::tiedot();
   });
   
-  $routes->get('/muokkaa/1', function() {
+  $routes->get('/suunnitelmat/muokkaa/1', function() {
 	HelloWorldController::muokkaa();
   });
   
-  $routes->get('/kirjautuminen', function() {
+  $routes->get('/suunnitelmat/kirjautuminen', function() {
 	HelloWorldController::kirjautuminen();
   });
   

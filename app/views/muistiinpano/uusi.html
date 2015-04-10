@@ -1,17 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
   <h1>Luo uusi muistiinpano</h1>
 
-  {% if virheet %}
-    <div class="alert alert-danger">
-      <ul>
-        {% for virhe in virheet %}
-          <li>{{virhe}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+  {{lomakkeet.nayta_virheet(virheet)}}
 
   <form method="post" action="{{base_path}}/muistiinpano">
     <div class="form-group">
@@ -33,6 +26,7 @@
 		<option>5</option>
 	  </select>
     </div>
+    <br>
     <div class="form-group">
 	  <button type="submit" class="btn btn-success">Tallenna</button>
     </div>

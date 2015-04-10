@@ -1,17 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
   <h1>Muokkaa: {{muistiinpano.nimi}}</h1>
 
-  {% if virheet %}
-    <div class="alert alert-danger">
-	  <ul>
-	  	{% for virhe in virheet %}
-		  <li>{{virhe}}</li>
-		{% endfor %}
-	  </ul>
-    </div>
-  {% endif %}
+  {{lomakkeet.nayta_virheet(virheet)}}
 
   <form method="post" action="{{base_path}}/muistiinpano/{{muistiinpano.id}}/muokkaa">
 	<div class="form-group">
@@ -39,8 +32,6 @@
 	</div>
   </form>
 
-  <form method="post" action="{{base_path}}/muistiinpano/{{muistiinpano.id}}/poista" style="display: inline-block;">
-	<button type="submit" class="btn btn-danger">Poista</button>
-  </form>
+  {{lomakkeet.poista_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/poista")}}
 
 {% endblock %}

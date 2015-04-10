@@ -7,11 +7,10 @@ Yleisiä linkkejä:
 
 Sivujen suunnitelmia:
 
-* [Etusivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/)
-* [Kirjautumissivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/kirjautuminen)
-* [Listaussivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/lista)
-* [Muokkaussivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/muokkaa/1)
-* [Tietosivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/tiedot/1)
+* [Kirjautumissivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/suunnitelmat/kirjautuminen)
+* [Listaussivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/suunnitelmat/lista)
+* [Muokkaussivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/suunnitelmat/muokkaa/1)
+* [Tietosivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/suunnitelmat/tiedot/1)
 
 ## Työn aihe
 
