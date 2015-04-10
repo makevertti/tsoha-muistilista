@@ -16,7 +16,8 @@
 	  $parametrit = array(
 		'nimi' => $params['nimi'],
 		'lisatiedot' => $params['lisatiedot'],
-		'prioriteetti' => (int)$params['prioriteetti']
+		'prioriteetti' => (int)$params['prioriteetti'],
+		'kayttaja' => $_SESSION['kayttaja']
 	  );
 	  $muistiinpano = new Muistiinpano($parametrit);
 	  $virheet = $muistiinpano->errors();
@@ -56,7 +57,7 @@
 		$muistiinpano->paivita();
 		Redirect::to('/muistiinpano/' . $muistiinpano->id, array('viesti' => 'Muutokset tallennettu'));
 	  } else {
-		View::make('muistiinpano/muokkaa.html', array('virheet' => $virheet, 'parametrit' => $parametrit));
+		View::make('muistiinpano/muokkaa.html', array('virheet' => $virheet, 'muistiinpano' => $muistiinpano));
 	  }
 	}
 
