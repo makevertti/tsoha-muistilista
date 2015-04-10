@@ -9,8 +9,8 @@
     }
 
     public static function all() {
-      $kysely = DB::connection()->prepare('select * from muistiinpano');
-      $kysely->execute();
+      $kysely = DB::connection()->prepare('select * from muistiinpano where kayttaja = :kayttaja');
+      $kysely->execute(array('kayttaja' => $_SESSION['kayttaja']));
       $rivit = $kysely->fetchAll();
       $muistiinpanot = array();
 
@@ -48,8 +48,8 @@
     }
 	
 	public function save() {
-	  $kysely = DB::connection()->prepare('insert into muistiinpano (nimi, lisatiedot, prioriteetti, lisayspaiva) values (:nimi, :lisatiedot, :prioriteetti, now()) returning id');
-	  $kysely->execute(array('nimi' => $this->nimi, 'lisatiedot' => $this->lisatiedot, 'prioriteetti' => $this->prioriteetti));
+	  $kysely = DB::connection()->prepare('insert into muistiinpano (kayttaja, nimi, lisatiedot, prioriteetti, lisayspaiva) values (:kayttaja, :nimi, :lisatiedot, :prioriteetti, now()) returning id');
+	  $kysely->execute(array('kayttaja' => $_SESSION['kayttaja'], 'nimi' => $this->nimi, 'lisatiedot' => $this->lisatiedot, 'prioriteetti' => $this->prioriteetti));
 	  $rivi = $kysely->fetch();
 	  $this->id = $rivi['id'];
 	}

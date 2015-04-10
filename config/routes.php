@@ -51,3 +51,11 @@
   $routes->post('/muistiinpano/:id/poista', function($id) {
     MuistiinpanoController::poista($id);
   });
+
+  $routes->get('/kirjautuminen', function() {
+    KayttajaController::kirjautuminen();
+  });
+
+  $routes->post('/kirjautuminen', function() {
+    KayttajaController::kasittele_kirjautuminen();
+  });

@@ -45,7 +45,8 @@
 		'id' => $id,
 		'nimi' => $params['nimi'],
 		'lisatiedot' => $params['lisatiedot'],
-		'prioriteetti' => $params['prioriteetti']
+		'prioriteetti' => $params['prioriteetti'],
+		'kayttaja' => $_SESSION['kayttaja']
 	  );
 
 	  $muistiinpano = new Muistiinpano($parametrit);
