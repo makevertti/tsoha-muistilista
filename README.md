@@ -13,7 +13,7 @@ Testikäyttäjätunnuksia:
 * käyttäjätunnus: käyttäjä2  
   salasana: sala2
   
-* [Kirjautumissivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/suunnitelmat/kirjautuminen)  
+* [Kirjautumissivu] (http://markoete.users.cs.helsinki.fi/tsoha-muistilista/kirjautuminen)  
 
 Sivujen suunnitelmia:
 
