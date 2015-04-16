@@ -18,4 +18,9 @@
         View::make('kayttaja/kirjautuminen.html', array('virheet' => $virheet, 'kayttajatunnus' => $params['kayttajatunnus']));
       }
     }
+
+    public static function kirjaudu_ulos() {
+      $_SESSION['kayttaja'] = null;
+      Redirect::to('/kirjautuminen', array('viesti' => 'Olet kirjautunut ulos'));
+    }
   }

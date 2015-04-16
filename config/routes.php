@@ -1,6 +1,10 @@
 <?php
 
-  $routes->get('/', function() {
+  function check_logged_in() {
+    BaseController::check_logged_in();
+  }
+
+  $routes->get('/', 'check_logged_in', function() {
     MuistiinpanoController::index();
   });
 
@@ -24,31 +28,31 @@
 	HelloWorldController::kirjautuminen();
   });
   
-  $routes->get('/muistiinpanot', function() {
+  $routes->get('/muistiinpanot', 'check_logged_in', function() {
 	MuistiinpanoController::index();
   });
   
-  $routes->post('/muistiinpano', function() {
+  $routes->post('/muistiinpano', 'check_logged_in', function() {
     MuistiinpanoController::store();
   });
 
-  $routes->get('/muistiinpano/uusi', function() {
+  $routes->get('/muistiinpano/uusi', 'check_logged_in', function() {
     MuistiinpanoController::uusi();
   });
   
-  $routes->get('/muistiinpano/:id', function($id) {
+  $routes->get('/muistiinpano/:id', 'check_logged_in', function($id) {
 	MuistiinpanoController::show($id);
   });
 
-  $routes->get('/muistiinpano/:id/muokkaa', function($id) {
+  $routes->get('/muistiinpano/:id/muokkaa', 'check_logged_in', function($id) {
     MuistiinpanoController::muokkaa($id);
   });
 
-  $routes->post('/muistiinpano/:id/muokkaa', function($id) {
+  $routes->post('/muistiinpano/:id/muokkaa', 'check_logged_in', function($id) {
     MuistiinpanoController::paivita($id);
   });
 
-  $routes->post('/muistiinpano/:id/poista', function($id) {
+  $routes->post('/muistiinpano/:id/poista', 'check_logged_in', function($id) {
     MuistiinpanoController::poista($id);
   });
 
@@ -58,4 +62,8 @@
 
   $routes->post('/kirjautuminen', function() {
     KayttajaController::kasittele_kirjautuminen();
+  });
+
+  $routes->post('/kirjaudu_ulos', function() {
+    KayttajaController::kirjaudu_ulos();
   });

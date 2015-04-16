@@ -5,7 +5,7 @@
     
     public function __construct($attributes) {
       parent::__construct($attributes);
-	  $this->tarkistukset = array('tarkista_nimi', 'tarkista_prioriteetti');
+	  $this->tarkistukset = array('tarkista_nimi', 'tarkista_nimi2', 'tarkista_prioriteetti', 'tarkista_kuvaus');
     }
 
     public static function all() {
@@ -61,11 +61,27 @@
 	  }
 	  return $virheet;
 	}
+
+	public function tarkista_nimi2() {
+	  $virheet = array();
+	  if(strlen($this->nimi) > 50) {
+	  	$virheet[] = 'Muistiinpanon nimen enimmäispituus on 50 merkkiä';
+	  }
+	  return $virheet;
+	}
 	
 	public function tarkista_prioriteetti() {
 	  $virheet = array();
 	  if($this->prioriteetti < 1 || $this->prioriteetti > 5) {
 		$virheet[] = 'Prioriteetin on oltava välillä 1-5';
+	  }
+	  return $virheet;
+	}
+
+	public function tarkista_kuvaus() {
+	  $virheet = array();
+	  if(strlen($this->lisatiedot) > 500) {
+		$virheet[] = 'Kuvauksen enimmäispituus on 500 merkkiä';
 	  }
 	  return $virheet;
 	}
