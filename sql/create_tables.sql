@@ -15,7 +15,8 @@ create table muistiinpano(
 
 create table luokka(
 	id serial primary key,
-	nimi varchar(50)
+	nimi varchar(50),
+	kayttaja integer references kayttaja(id)
 );
 
 create table luokat(

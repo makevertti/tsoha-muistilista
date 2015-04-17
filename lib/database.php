@@ -14,8 +14,7 @@
             }else{
               $connection = new PDO($config['resource']);
             }
-
-            // Asetetaan tietokannan kenttien koodaukseksi utf8
+             // Asetetaan tietokannan kenttien koodaukseksi utf8
             $connection->exec("set names utf8");
 
         } catch (PDOException $e) {

@@ -13,12 +13,18 @@
 	
 	public static function store() {
 	  $params = $_POST;
+	  $luokat = $params['luokat'];
 	  $parametrit = array(
 		'nimi' => $params['nimi'],
 		'lisatiedot' => $params['lisatiedot'],
 		'prioriteetti' => (int)$params['prioriteetti'],
-		'kayttaja' => $_SESSION['kayttaja']
+		'kayttaja' => $_SESSION['kayttaja'],
+		'luokat' => array()
 	  );
+	  foreach($luokat as $luokka) {
+		$parametrit['luokka'][] = $luokka;
+	  }
+
 	  $muistiinpano = new Muistiinpano($parametrit);
 	  $virheet = $muistiinpano->errors();
 
@@ -41,14 +47,18 @@
 
 	public static function paivita($id) {
 	  $params = $_POST;
-
+	  $luokat = $params['luokat'];
 	  $parametrit = array(
 		'id' => $id,
 		'nimi' => $params['nimi'],
 		'lisatiedot' => $params['lisatiedot'],
 		'prioriteetti' => $params['prioriteetti'],
-		'kayttaja' => $_SESSION['kayttaja']
+		'kayttaja' => $_SESSION['kayttaja'],
+		'luokat' => array()
 	  );
+	  foreach($luokat as $luokka) {
+		$parametrit['luokka'][] = $luokka;
+	  }
 
 	  $muistiinpano = new Muistiinpano($parametrit);
 	  $virheet = $muistiinpano->errors();

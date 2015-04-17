@@ -67,3 +67,31 @@
   $routes->post('/kirjaudu_ulos', function() {
     KayttajaController::kirjaudu_ulos();
   });
+
+  $routes->get('/luokat', 'check_logged_in', function() {
+    LuokkaController::index();
+  });
+
+  $routes->get('/luokka/uusi', 'check_logged_in', function() {
+    LuokkaController::uusi();
+  });
+
+  $routes->get('/luokka/:id', 'check_logged_in', function($id) {
+    LuokkaController::show($id);
+  });
+
+  $routes->post('/luokka', 'check_logged_in', function() {
+    LuokkaController::store();
+  });
+
+  $routes->get('/luokka/:id/muokkaa', 'check_logged_in', function($id) {
+    LuokkaController::muokkaa($id);
+  });
+
+  $routes->post('/luokka/:id/muokkaa', 'check_logged_in', function($id) {
+    LuokkaController::paivita($id);
+  });
+
+  $routes->post('/luokka/:id/poista', 'check_logged_in', function($id) {
+    LuokkaController::poista($id);
+  });

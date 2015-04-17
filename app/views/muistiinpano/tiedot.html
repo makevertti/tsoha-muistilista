@@ -7,7 +7,13 @@
   <h1>{{muistiinpano.nimi}}</h1>
   
   <p><strong>Lisätiedot:</strong> {{muistiinpano.lisatiedot}}</p>
-  <p><strong>Luokka:</strong> [kategoria]</p>
+  {% if muistiinpano.luokat|length > 0 %}
+    <p><strong>Luokat:</strong>
+    {% for luokka in muistiinpano.luokat %}
+      {{luokka.nimi}} <br>
+    {% endfor %}
+  {% endif %}
+  </p>
   <p><strong>Tärkeys:</strong> {{muistiinpano.prioriteetti}}</p>
   <p><strong>Lisäyspäivä:</strong> {{muistiinpano.lisayspaiva}}</p>
   

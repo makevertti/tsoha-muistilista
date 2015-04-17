@@ -12,7 +12,7 @@
     <thead>
       <tr>
         <th>Nimi</th>
-		<th>Luokka</th>
+		<th>Luokat</th>
 		<th>Tärkeys</th>
 		<th>Lisäyspäivä</th>
 		<th></th>
@@ -23,7 +23,13 @@
 	  {% for muistiinpano in muistiinpanot %}
         <tr>
           <td><a href="{{base_path}}/muistiinpano/{{muistiinpano.id}}">{{muistiinpano.nimi}}</a></td>
-		  <td>[kategoria]</td>
+          <td>
+            {% if muistiinpano.luokat|length > 0 %}
+              {% for luokka in muistiinpano.luokat %}
+                {{luokka.nimi}} <br>
+              {% endfor %}
+            {% endif %}
+          </td>
 		  <td>{{muistiinpano.prioriteetti}}</td>
 		  <td>{{muistiinpano.lisayspaiva}}</td>
 		  <td>{{lomakkeet.muokkaa_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/muokkaa")}}</td>

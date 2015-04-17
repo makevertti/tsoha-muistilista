@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
+
+  {{lomakkeet.nayta_viesti(viesti)}}
+
+  <h1>{{luokka.nimi}}</h1>
+  
+  <p>
+    {{lomakkeet.muokkaa_nappi("#{base_path}/luokka/#{luokka.id}/muokkaa")}}
+    {{lomakkeet.poista_nappi("#{base_path}/luokka/#{luokka.id}/poista")}}
+  </p>
+
+{% endblock %}
