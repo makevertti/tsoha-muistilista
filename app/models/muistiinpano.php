@@ -16,8 +16,8 @@
 	  $luokat = array();
 
       foreach($rivit as $rivi) {
-		$luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.nimi = :nimi');
-		$luokkakysely->execute(array('nimi' => $rivi['nimi']));
+		$luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.id = :id');
+		$luokkakysely->execute(array('id' => $rivi['id']));
 		$luokkarivit = $luokkakysely->fetchAll();
 		foreach($luokkarivit as $luokkarivi) {
 		  $luokat[] = new Luokka(array(
@@ -35,6 +35,7 @@
 	    'kayttaja' => $rivi['kayttaja'],
 		'luokat' => $luokat
 	    ));
+		unset($luokat);
 	  }
       return $muistiinpanot;
     }
@@ -76,12 +77,10 @@
 	  $rivi = $kysely->fetch();
 	  $this->id = $rivi['id'];
 
-	  $luokat =$this->luokat;
-	  foreach($luokat as $luokka) {
+	  foreach($this->luokat as $luokka) {
 		$luokkakysely = DB::connection()->prepare('insert into luokat (luokka, muistiinpano) values (:luokka, :muistiinpano)');
-		$luokkakysely->execute(array('luokka' => $luokka->id, 'muistiinpano' => $this->id));
+		$luokkakysely->execute(array('luokka' => $luokka, 'muistiinpano' => $this->id));
 		$rivi = $kysely->fetch();
-		$this->id = $rivi['id'];
 	  }
 	}
 	
@@ -129,18 +128,18 @@
 	  $luokat =$this->luokat;
 	  foreach($luokat as $luokka) {
 		$luokkakysely = DB::connection()->prepare('insert into luokat (luokka, muistiinpano) values (:luokka, :muistiinpano)');
-		$luokkakysely->execute(array('luokka' => $luokka->id, 'muistiinpano' => $this->id));
+		$luokkakysely->execute(array('luokka' => $luokka, 'muistiinpano' => $this->id));
 		$rivi = $kysely->fetch();
 	  }
 	}
 
 	public function poista() {
+	  $luokkakysely = DB::connection()->prepare('delete from luokat where muistiinpano = :muistiinpano');
+	  $luokkakysely->execute(array('muistiinpano' => $this->id));
+	  $rivi = $luokkakysely->fetch();
+
 	  $kysely = DB::connection()->prepare('delete from muistiinpano where id = :id');
 	  $kysely->execute(array('id' => $this->id));
-	  $rivi = $kysely->fetch();
-
-	  $luokkakysely = DB::connection()->prepare('delete from luokat where muistiinpano = :muistiinpano');
-	  $luokkakysely->execute(array('muistiinapno' => $this->id));
 	  $rivi = $kysely->fetch();
 	}
   }

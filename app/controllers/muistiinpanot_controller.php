@@ -22,7 +22,7 @@
 		'luokat' => array()
 	  );
 	  foreach($luokat as $luokka) {
-		$parametrit['luokka'][] = $luokka;
+		$parametrit['luokat'][] = $luokka;
 	  }
 
 	  $muistiinpano = new Muistiinpano($parametrit);
@@ -37,12 +37,14 @@
 	}
 	
 	public static function uusi() {
-	  View::make('muistiinpano/uusi.html');
+	  $luokat = Luokka::all();
+	  View::make('muistiinpano/uusi.html', array('luokat' => $luokat));
 	}
 
 	public static function muokkaa($id) {
 	  $muistiinpano = Muistiinpano::find($id);
-	  View::make('muistiinpano/muokkaa.html', array('muistiinpano' => $muistiinpano));
+	  $luokat = Luokka::all();
+	  View::make('muistiinpano/muokkaa.html', array('muistiinpano' => $muistiinpano, 'luokat' => $luokat));
 	}
 
 	public static function paivita($id) {
@@ -57,7 +59,7 @@
 		'luokat' => array()
 	  );
 	  foreach($luokat as $luokka) {
-		$parametrit['luokka'][] = $luokka;
+		$parametrit['luokat'][] = $luokka;
 	  }
 
 	  $muistiinpano = new Muistiinpano($parametrit);

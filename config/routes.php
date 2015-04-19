@@ -31,7 +31,7 @@
   $routes->get('/muistiinpanot', 'check_logged_in', function() {
 	MuistiinpanoController::index();
   });
-  
+
   $routes->post('/muistiinpano', 'check_logged_in', function() {
     MuistiinpanoController::store();
   });
@@ -39,7 +39,7 @@
   $routes->get('/muistiinpano/uusi', 'check_logged_in', function() {
     MuistiinpanoController::uusi();
   });
-  
+
   $routes->get('/muistiinpano/:id', 'check_logged_in', function($id) {
 	MuistiinpanoController::show($id);
   });

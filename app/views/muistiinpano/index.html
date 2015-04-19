@@ -24,11 +24,9 @@
         <tr>
           <td><a href="{{base_path}}/muistiinpano/{{muistiinpano.id}}">{{muistiinpano.nimi}}</a></td>
           <td>
-            {% if muistiinpano.luokat|length > 0 %}
-              {% for luokka in muistiinpano.luokat %}
-                {{luokka.nimi}} <br>
-              {% endfor %}
-            {% endif %}
+            {% for luokka in muistiinpano.luokat %}
+              {{luokka.nimi}} <br>
+            {% endfor %}
           </td>
 		  <td>{{muistiinpano.prioriteetti}}</td>
 		  <td>{{muistiinpano.lisayspaiva}}</td>

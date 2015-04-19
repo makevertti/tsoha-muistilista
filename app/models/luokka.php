@@ -74,5 +74,9 @@
       $kysely = DB::connection()->prepare('delete from luokka where id = :id');
       $kysely->execute(array('id' => $this->id));
       $rivi = $kysely->fetch();
+
+      $kysely = DB::connection()->prepare('delete from luokat where luokka = :luokka');
+      $kysely->execute(array('luokka' => $this->id));
+      $rivi = $kysely->fetch();
     }  
   }

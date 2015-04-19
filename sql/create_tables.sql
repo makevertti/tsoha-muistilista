@@ -20,7 +20,6 @@ create table luokka(
 );
 
 create table luokat(
-	id serial primary key,
 	muistiinpano integer references muistiinpano(id),
 	luokka integer references luokka(id)
 );
