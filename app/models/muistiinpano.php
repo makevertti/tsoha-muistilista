@@ -16,7 +16,7 @@
 
 
       foreach($rivit as $rivi) {
-          $luokat = array();
+        $luokat = array();
 		$luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.id = :id');
 		$luokkakysely->execute(array('id' => $rivi['id']));
 		$luokkarivit = $luokkakysely->fetchAll();
@@ -100,7 +100,7 @@
 	  }
 	  return $virheet;
 	}
-	
+
 	public function tarkista_prioriteetti() {
 	  $virheet = array();
 	  if($this->prioriteetti < 1 || $this->prioriteetti > 5) {

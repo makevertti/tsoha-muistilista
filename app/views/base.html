@@ -17,6 +17,9 @@
 
       <!-- Oma tyylitiedostomme -->
       <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+
+      <link href="{{base_path}}/assets/css/table.css" rel="stylesheet">
+
     {% endblock %}
   </head>
 
@@ -50,6 +53,9 @@
 		    <ul class="nav navbar-nav navbar-right">
 			  <li><a href="{{base_path}}/kirjautuminen">Kirjaudu sisään</a></li>
 		    </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{base_path}}/rekisteroityminen">Rekisteröidy</a></li>
+            </ul>
           {% endif %}
         </div>
       </div>
@@ -69,6 +75,9 @@
 
       <!-- Oma skriptitiedostomme -->
       <script src="{{base_path}}/assets/js/site.js"></script>
+
+      <script src="{{base_path}}/assets/js/jquery.tablesorter.js"></script>
+
     {% endblock %}
   </body>
 </html>

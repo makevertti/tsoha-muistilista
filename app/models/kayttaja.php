@@ -37,4 +37,25 @@
         }
         return $kayttaja;
       }
+
+      public static function luo_uusi_kayttaja($kayttajatunnus, $salasana) {
+        $kysely = DB::connection()->prepare('select * from kayttaja where kayttajatunnus = :kayttajatunnus');
+        $kysely->execute(array('kayttajatunnus' => $kayttajatunnus));
+        $rivi = $kysely->fetch();
+
+        $virheet = array();
+        if ($rivi) {
+          $virheet[] = "Käyttäjätunnus on jo olemassa";
+        }
+        if (strlen($salasana) < 4 || strlen($salasana) > 50) {
+          $virheet[] = "Salasanan pitää olla 4-50 merkkiä";
+        }
+
+        if($virheet) {
+          return $virheet;
+        } else {
+          $kysely = DB::connection()->prepare('insert into kayttaja (kayttajatunnus, salasana) values (:kayttajatunnus, :salasana)');
+          $kysely->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
+        }
+      }
     }

@@ -95,3 +95,11 @@
   $routes->post('/luokka/:id/poista', 'check_logged_in', function($id) {
     LuokkaController::poista($id);
   });
+
+  $routes->get('/rekisteroityminen', function() {
+    KayttajaController::rekisteroityminen();
+  });
+
+  $routes->post('/rekisteroityminen', function() {
+    KayttajaController::luo_uusi_kayttaja();
+  });

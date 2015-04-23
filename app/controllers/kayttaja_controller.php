@@ -23,4 +23,19 @@
       $_SESSION['kayttaja'] = null;
       Redirect::to('/kirjautuminen', array('viesti' => 'Olet kirjautunut ulos'));
     }
+
+    public static function rekisteroityminen() {
+      View::make('kayttaja/rekisteroityminen.html');
+    }
+
+    public static function luo_uusi_kayttaja() {
+      $params = $_POST;
+      $virheet = Kayttaja::luo_uusi_kayttaja($params['kayttajatunnus'], $params['salasana']);
+
+      if($virheet) {
+        View::make('/kayttaja/rekisteroityminen.html', array('virheet' => $virheet));
+      } else {
+        Redirect::to('/kirjautuminen', array('viesti' => 'Uusi käyttäjätunnus luotu'));
+      }
+    }
   }
