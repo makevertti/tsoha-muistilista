@@ -13,9 +13,10 @@
       $kysely->execute(array('kayttaja' => $_SESSION['kayttaja']));
       $rivit = $kysely->fetchAll();
       $muistiinpanot = array();
-	  $luokat = array();
+
 
       foreach($rivit as $rivi) {
+          $luokat = array();
 		$luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.id = :id');
 		$luokkakysely->execute(array('id' => $rivi['id']));
 		$luokkarivit = $luokkakysely->fetchAll();

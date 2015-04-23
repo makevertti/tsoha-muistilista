@@ -26,18 +26,19 @@
 		<option>5</option>
 	  </select>
     </div>
+    <br>
     <div class="form-group">
-      <label>Luokat</label>
-      <select class="form-control" name="luokat[]" multiple="">
-        <option selected="selected" value="">-ei luokkaa-</option>
-        {% for luokka in luokat %}
-          <option value="{{luokka.id}}">{{luokka.nimi}}</option>
-        {% endfor %}
-      </select>
+      <label class="control-label">Luokat</label>
+      <br>
+      {% for luokka in luokat %}
+      <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+      <br>
+      {% endfor %}
+      <input type="hidden" name="luokat[]" value="">
     </div>
     <br>
     <div class="form-group">
-	  <button type="submit" class="btn btn-success">Tallenna</button>
+      <button type="submit" class="btn btn-success">Tallenna</button>
     </div>
   </form>
 
