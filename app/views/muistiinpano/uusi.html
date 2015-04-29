@@ -31,8 +31,13 @@
       <label class="control-label">Luokat</label>
       <br>
       {% for luokka in luokat %}
-      <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
-      <br>
+        {% if luokka.id in valitut %}
+          <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+          <br>
+        {% else %}
+          <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+          <br>
+        {% endif %}
       {% endfor %}
       <input type="hidden" name="luokat[]" value="">
     </div>

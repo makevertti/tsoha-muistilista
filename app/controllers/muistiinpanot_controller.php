@@ -32,7 +32,9 @@
 	    $muistiinpano->save();
 	    Redirect::to('/muistiinpano/' . $muistiinpano->id, array('viesti' => 'Muistiinpano lisätty'));
 	  } else {
-		View::make('muistiinpano/uusi.html', array('virheet' => $virheet, 'parametrit' => $parametrit));
+		$luokat = Luokka::all();
+		$valitut = $muistiinpano->luokat;
+		View::make('muistiinpano/uusi.html', array('virheet' => $virheet, 'parametrit' => $parametrit, 'luokat' => $luokat, 'valitut' => $valitut));
 	  }
 	}
 	
