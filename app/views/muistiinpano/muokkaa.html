@@ -16,7 +16,7 @@
 	  <textarea name="lisatiedot" class="form-control" type="text">{{muistiinpano.lisatiedot}}</textarea>
 	</div>
 	<label class="control-label">Prioriteetti</label>
-	<div class "form-group">
+	<div class="form-group">
 	  <select type="number" name="prioriteetti" class="form-control">
 	    <option selected="selected">{{muistiinpano.prioriteetti}}</option>
 	    <option>1</option>
@@ -31,8 +31,13 @@
 	  <label class="control-label">Luokat</label>
         <br>
 	    {% for luokka in luokat %}
-		  <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
-          <br>
+          {% if luokka.id in muistiinpanon_luokat %}
+		    <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+            <br>
+          {% else %}
+            <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+            <br>
+          {% endif %}
 		{% endfor %}
         <input type="hidden" name="luokat[]" value="">
 	</div>

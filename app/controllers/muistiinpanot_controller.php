@@ -44,7 +44,11 @@
 	public static function muokkaa($id) {
 	  $muistiinpano = Muistiinpano::find($id);
 	  $luokat = Luokka::all();
-	  View::make('muistiinpano/muokkaa.html', array('muistiinpano' => $muistiinpano, 'luokat' => $luokat));
+	  $muistiinpanon_luokat = array();
+	  foreach($muistiinpano->luokat as $luokka) {
+	    $muistiinpanon_luokat[] = $luokka->id;
+	  }
+	  View::make('muistiinpano/muokkaa.html', array('muistiinpano' => $muistiinpano, 'luokat' => $luokat, 'muistiinpanon_luokat' => $muistiinpanon_luokat));
 	}
 
 	public static function paivita($id) {
@@ -69,7 +73,12 @@
 		$muistiinpano->paivita();
 		Redirect::to('/muistiinpano/' . $muistiinpano->id, array('viesti' => 'Muutokset tallennettu'));
 	  } else {
-		View::make('muistiinpano/muokkaa.html', array('virheet' => $virheet, 'muistiinpano' => $muistiinpano));
+		$luokat = Luokka::all();
+		$muistiinpanon_luokat = array();
+		foreach($muistiinpano->luokat as $luokka) {
+		  $muistiinpanon_luokat[] = $luokka;
+		}
+		View::make('muistiinpano/muokkaa.html', array('virheet' => $virheet, 'muistiinpano' => $muistiinpano, 'luokat' => $luokat, 'muistiinpanon_luokat' => $muistiinpanon_luokat));
 	  }
 	}
 

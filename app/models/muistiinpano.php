@@ -46,8 +46,8 @@
       $kysely->execute(array('id' => $id));
       $rivi = $kysely->fetch();
 
-	  $luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.nimi = :nimi');
-	  $luokkakysely->execute(array('nimi' => $rivi['nimi']));
+	  $luokkakysely = DB::connection()->prepare('select luokka.id, luokka.nimi from muistiinpano, luokka, luokat where luokat.muistiinpano = muistiinpano.id and luokat.luokka = luokka.id and muistiinpano.id = :id');
+	  $luokkakysely->execute(array('id' => $id));
 	  $luokkarivit = $luokkakysely->fetchAll();
 	  $luokat = array();
 	  foreach($luokkarivit as $luokkarivi) {
